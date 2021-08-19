@@ -1,0 +1,22 @@
+### GENERAL ###
+server:
+  port: 8081
+  servlet.context-path: /api/candidatos
+
+spring:
+  application.name: refinancing-api
+#  cloud.config.fail-fast: true
+#  main.web-application-type: servlet
+#  jackson:
+#    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+#    deserialization.fail-on-unknown-properties: false
+#    default-property-inclusion: NON_ABSENT
+#    profiles.default: local
+
+
+logging:
+  level:
+    root: ERROR
+    io.platformbuilders: INFO
+    org.springframework: ERROR
+    javax.management: ERROR
