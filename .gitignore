@@ -1,3 +1,6 @@
+mvnw
+mvnw.cmd
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -282,3 +285,7 @@ buildNumber.properties
 *.xhtml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,intellij+all,visualstudiocode,java,web,maven
+/mvnw
+/mvnw.cmd
+/.mvn/wrapper/MavenWrapperDownloader.java
+/.mvn/wrapper/maven-wrapper.properties
