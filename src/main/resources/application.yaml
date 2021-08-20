@@ -1,10 +1,10 @@
 ### GENERAL ###
 server:
   port: 8080
-  servlet.context-path: /api/candidatos
+  servlet.context-path: /api/clientes
 
 spring:
-  application.name: refinancing-api
+  application.name: cliente
 #  cloud.config.fail-fast: true
 #  main.web-application-type: servlet
 #  jackson:
@@ -12,7 +12,13 @@ spring:
 #    deserialization.fail-on-unknown-properties: false
 #    default-property-inclusion: NON_ABSENT
 #    profiles.default: local
-
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cliente
+    password: root
+    username: root
+  jpa:
+    show-sql: true
 
 logging:
   level:
