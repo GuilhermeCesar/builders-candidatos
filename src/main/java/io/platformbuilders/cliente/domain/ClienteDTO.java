@@ -21,7 +21,7 @@ public class ClienteDTO {
     @NotEmpty
     String nome;
     @NotEmpty
-    String socialId;
+    String cpf;
     @NotNull
     LocalDate dataNascimento;
     @NotNull
