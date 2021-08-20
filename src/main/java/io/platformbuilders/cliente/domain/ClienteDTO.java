@@ -7,6 +7,8 @@ import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Value
@@ -16,8 +18,12 @@ import java.time.LocalDate;
 @ToString
 public class ClienteDTO {
 
+    @NotEmpty
     String nome;
+    @NotEmpty
     String socialId;
+    @NotNull
     LocalDate dataNascimento;
+    @NotNull
     Sexo sexo;
 }

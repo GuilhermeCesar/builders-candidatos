@@ -17,7 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/v1/candidato", produces = APPLICATION_JSON_VALUE)
-public class Candidatos {
+public class CandidatosResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
