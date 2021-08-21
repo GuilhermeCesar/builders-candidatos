@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Validated
@@ -24,7 +26,7 @@ public class CandidatosResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public ClienteDTO criarClient(@RequestBody ClienteRequestDTO clienteRequestDTO) {
+    public ClienteDTO criarClient(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
         return this.clienteService.persist(clienteRequestDTO);
     }
 }
