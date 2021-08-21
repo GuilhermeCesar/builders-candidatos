@@ -20,7 +20,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/v1/clientes", produces = APPLICATION_JSON_VALUE)
-public class CandidatosResource {
+public class ClienteResource {
 
     private final ClienteService clienteService;
 
