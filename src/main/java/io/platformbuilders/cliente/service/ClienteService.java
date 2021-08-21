@@ -34,10 +34,8 @@ public class ClienteService {
                         this.messageHelper.get(ERROR_NOT_FOUND, id)
                 ));
 
-
         return Try.of(() -> this.clienteMapper
-                        .converterClienteRequestDTOparaCliente(clienteBanco, clienteRequestDTO)
-                )
+                        .converterClienteRequestDTOparaCliente(clienteBanco, clienteRequestDTO))
                 .map(this.clienteRepository::save)
                 .map(this.clienteMapper::coverterClienteparaClienteDTO)
                 .get();
