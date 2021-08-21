@@ -31,6 +31,7 @@ public class ValidationHandler {
                 .builder()
                 .message(e.getMessage())
                 .error(e.getMessage())
+                .trace(e.getMessage())
                 .build();
     }
 
@@ -49,6 +50,7 @@ public class ValidationHandler {
                 .message(e.getMessage())
                 .error(e.getClass().getName())
                 .errorsList(errors)
+                .trace(e.getMessage())
                 .build();
     }
 
@@ -67,6 +69,7 @@ public class ValidationHandler {
                 .message(listErrors.get(0))
                 .error(ex.getClass().getName())
                 .errorsList(listErrors)
+                .trace(ex.getMessage())
                 .build();
     }
 }

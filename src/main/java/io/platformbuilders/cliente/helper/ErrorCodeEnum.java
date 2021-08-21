@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum ErrorCodeEnum {
 
-    ERROR_VALID_DATA("error.valid.data");
+    ERROR_NOT_FOUND("error.not.found");
 
     private final String messageKey;
 }

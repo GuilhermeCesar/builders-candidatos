@@ -9,6 +9,8 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDate;
 
+import static io.platformbuilders.cliente.utils.CalculaIdadeUtils.calculaIdade;
+
 @Value
 @With
 @Jacksonized
@@ -22,4 +24,8 @@ public class ClienteDTO {
     LocalDate dataNascimento;
     Sexo sexo;
     Integer idade;
+
+    public Integer getIdade() {
+        return calculaIdade(dataNascimento);
+    }
 }
