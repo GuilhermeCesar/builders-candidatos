@@ -1,13 +1,13 @@
 package io.platformbuilders.cliente.utils.serializer;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CpfDeserializerTest {
+class CpfDeserializerTest {
 
 
     @Test
-    public void testeDeserializacao() {
+    void testeDeserializacao() {
         final var cpf = "317.050.120-86";
         Assert.assertEquals("31705012086", CpfDeserializer.removerCaractersEspeciais(cpf));
     }

@@ -1,14 +1,13 @@
 package io.platformbuilders.cliente.utils.serializer;
 
 import io.platformbuilders.cliente.enumeration.Sexo;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
+import static io.platformbuilders.cliente.enumeration.Sexo.OUTROS;
 
-@NoArgsConstructor
-@Slf4j
 public class SexoDeserializer {
+
+    private SexoDeserializer() {
+    }
 
     public static Sexo deserialize(String sexo) {
         for (Sexo tipoOperacaoEnum : Sexo.values()) {
@@ -16,6 +15,6 @@ public class SexoDeserializer {
                 return tipoOperacaoEnum;
             }
         }
-        return Sexo.OUTROS;
+        return OUTROS;
     }
 }
