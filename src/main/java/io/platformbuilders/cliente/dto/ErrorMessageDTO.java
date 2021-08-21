@@ -12,12 +12,11 @@ import static java.time.LocalDateTime.now;
 @With
 @Jacksonized
 @Builder
-public record ErrorMessageDTO(
-        LocalDateTime timestamp,
-        String error,
-        String message,
-        String path,
-        List<String> errorsList) {
+public record ErrorMessageDTO(LocalDateTime timestamp,
+                              String error,
+                              String message,
+                              String path,
+                              List<String> errorsList) {
 
     public ErrorMessageDTO {
         timestamp = now();

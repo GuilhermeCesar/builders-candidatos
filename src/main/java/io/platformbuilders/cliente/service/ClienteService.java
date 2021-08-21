@@ -22,7 +22,7 @@ public class ClienteService {
         this.clienteRepository.save(cliente);
 
         var clienteDTO = this.clienteMapper.buildCliente(cliente);
-        final var idade = calculaIdade(clienteDTO.getDataNascimento());
+        final var idade = calculaIdade(clienteDTO.dataNascimento());
 
         return clienteDTO
                 .withIdade(idade);
