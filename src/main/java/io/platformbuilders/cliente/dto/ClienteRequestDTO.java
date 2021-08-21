@@ -3,6 +3,7 @@ package io.platformbuilders.cliente.dto;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import io.platformbuilders.cliente.enumeration.Sexo;
+import io.platformbuilders.cliente.utils.serializer.CpfDeserializer;
 import io.platformbuilders.cliente.utils.serializer.DateDeserializer;
 import io.platformbuilders.cliente.utils.serializer.SexoDeserializer;
 import lombok.Builder;
@@ -34,15 +35,19 @@ public class ClienteRequestDTO {
 
     @JsonPOJOBuilder(withPrefix = "")
     public static class JacksonBuilder {
-        LocalDate dataNascimento;
 
         public JacksonBuilder dataNascimento(String dataNascimento) {
-            this.dataNascimento = DateDeserializer.localDatePT_BR(dataNascimento);
+            this.dataNascimento = DateDeserializer.localDatePtBr(dataNascimento);
             return this;
         }
 
         public JacksonBuilder sexo(String sexo) {
             this.sexo = SexoDeserializer.deserialize(sexo);
+            return this;
+        }
+
+        public JacksonBuilder cpf(String cpf) {
+            this.cpf = CpfDeserializer.removerCaractersEspeciais(cpf);
             return this;
         }
     }

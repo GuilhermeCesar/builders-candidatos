@@ -1,7 +1,6 @@
 package io.platformbuilders.cliente.utils.serializer;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateDeserializer {
@@ -16,7 +15,7 @@ public class DateDeserializer {
      * @param date
      * @return
      */
-    public static LocalDate localDatePT_BR(String date) {
+    public static LocalDate localDatePtBr(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(date, formatter);
     }

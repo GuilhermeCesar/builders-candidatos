@@ -11,7 +11,7 @@ import static io.platformbuilders.cliente.utils.serializer.SexoDeserializer.dese
 public class SexoDeserializerTest {
 
     @Test
-    public void testeSerializacao() {
+    public void testeDeserializacao() {
         Assert.assertSame(MASCULINO, deserialize("M"));
         Assert.assertSame(FEMININO, deserialize("F"));
         Assert.assertSame(OUTROS, deserialize("OUTROS"));
