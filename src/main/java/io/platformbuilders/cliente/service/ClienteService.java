@@ -27,7 +27,7 @@ public class ClienteService {
     }
 
     private ClienteDTO calculaIdade(ClienteDTO clienteDTO) {
-        final var idade = Period.between(clienteDTO.dataNascimento(), LocalDate.now()).getYears();
+        final var idade = Period.between(clienteDTO.getDataNascimento(), LocalDate.now()).getYears();
         return clienteDTO.withIdade(idade);
     }
 }
