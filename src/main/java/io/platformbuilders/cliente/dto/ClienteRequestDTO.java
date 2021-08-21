@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 import lombok.With;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,7 +17,6 @@ import java.time.LocalDate;
 
 @Value
 @With
-//@Jacksonized
 @Builder(builderClassName = "JacksonBuilder")
 @ToString
 @JsonDeserialize(builder = ClienteRequestDTO.JacksonBuilder.class)
@@ -24,6 +24,7 @@ public class ClienteRequestDTO {
 
     @NotEmpty
     String nome;
+    @CPF
     @NotEmpty
     String cpf;
     @NotNull

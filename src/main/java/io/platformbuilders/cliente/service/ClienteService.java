@@ -17,7 +17,7 @@ public class ClienteService {
     private final ClienteMapper clienteMapper;
     private final ClienteRepository clienteRepository;
 
-    public ClienteDTO persist(final ClienteRequestDTO clienteRequestDTO) {
+    public ClienteDTO salvar(final ClienteRequestDTO clienteRequestDTO) {
         var cliente = this.clienteMapper.buildCliente(clienteRequestDTO);
         this.clienteRepository.save(cliente);
 

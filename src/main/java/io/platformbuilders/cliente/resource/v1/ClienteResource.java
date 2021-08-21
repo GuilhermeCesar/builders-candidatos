@@ -27,6 +27,6 @@ public class ClienteResource {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ClienteDTO criarClient(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
-        return this.clienteService.persist(clienteRequestDTO);
+        return this.clienteService.salvar(clienteRequestDTO);
     }
 }
