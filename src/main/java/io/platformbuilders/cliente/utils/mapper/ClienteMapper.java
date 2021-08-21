@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public abstract class ClienteMapper {
 
-    public abstract Cliente buildCliente(ClienteRequestDTO clienteRequestDTO);
+    public abstract Cliente converterClienteRequestDTOparaCliente(ClienteRequestDTO clienteRequestDTO);
 
-    public abstract ClienteDTO buildCliente(Cliente cliente);
+    public abstract ClienteDTO coverterClienteparaClienteDTO(Cliente cliente);
 }

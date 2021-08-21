@@ -4,6 +4,7 @@ import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
 import io.platformbuilders.cliente.repository.ClienteRepository;
 import io.platformbuilders.cliente.utils.mapper.ClienteMapper;
+import io.vavr.control.Try;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +19,15 @@ public class ClienteService {
     private final ClienteRepository clienteRepository;
 
     public ClienteDTO salvar(final ClienteRequestDTO clienteRequestDTO) {
-        var cliente = this.clienteMapper.buildCliente(clienteRequestDTO);
-        this.clienteRepository.save(cliente);
-
-        var clienteDTO = this.clienteMapper.buildCliente(cliente);
-        final var idade = calculaIdade(clienteDTO.dataNascimento());
-
-        return clienteDTO
-                .withIdade(idade);
+        return Try.of(() -> this.clienteMapper.converterClienteRequestDTOparaCliente(clienteRequestDTO))
+                .map(this.clienteRepository::save)
+                .map(this.clienteMapper::coverterClienteparaClienteDTO)
+                .map(this::calculaIdade)
+                .get();
     }
 
-    private Integer calculaIdade(final LocalDate dataNascimento) {
-        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    private ClienteDTO calculaIdade(ClienteDTO clienteDTO) {
+        final var idade = Period.between(clienteDTO.dataNascimento(), LocalDate.now()).getYears();
+        return clienteDTO.withIdade(idade);
     }
 }
