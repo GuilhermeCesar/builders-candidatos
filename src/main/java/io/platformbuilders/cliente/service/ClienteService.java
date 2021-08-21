@@ -2,6 +2,7 @@ package io.platformbuilders.cliente.service;
 
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
+import io.platformbuilders.cliente.entity.Cliente;
 import io.platformbuilders.cliente.exception.ServiceException;
 import io.platformbuilders.cliente.helper.MessageHelper;
 import io.platformbuilders.cliente.repository.ClienteRepository;
@@ -29,15 +30,25 @@ public class ClienteService {
     }
 
     public ClienteDTO atualizar(final Long id, final ClienteRequestDTO clienteRequestDTO) {
-        var clienteBanco = this.clienteRepository.findById(id)
-                .orElseThrow(() -> new ServiceException(NOT_FOUND,
-                        this.messageHelper.get(ERROR_NOT_FOUND, id)
-                ));
+        var clienteBanco = getCliente(id);
 
         return Try.of(() -> this.clienteMapper
                         .converterClienteRequestDTOparaCliente(clienteBanco, clienteRequestDTO))
                 .map(this.clienteRepository::save)
                 .map(this.clienteMapper::coverterClienteparaClienteDTO)
                 .get();
+    }
+
+    public ClienteDTO buscar(Long clienteId) {
+        var clienteBanco = getCliente(clienteId);
+        return this.clienteMapper
+                .coverterClienteparaClienteDTO(clienteBanco);
+    }
+
+    private Cliente getCliente(Long clienteId) {
+        return this.clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new ServiceException(NOT_FOUND,
+                        this.messageHelper.get(ERROR_NOT_FOUND, clienteId)
+                ));
     }
 }
