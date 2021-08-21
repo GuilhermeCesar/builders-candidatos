@@ -1,7 +1,6 @@
 package io.platformbuilders.cliente.dto;
 
 import lombok.Builder;
-import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
@@ -10,16 +9,17 @@ import java.util.List;
 
 import static java.time.LocalDateTime.now;
 
-@Value
 @With
 @Jacksonized
 @Builder
-public class ErrorMessageDTO {
+public record ErrorMessageDTO(
+        LocalDateTime timestamp,
+        String error,
+        String message,
+        String path,
+        List<String> errorsList) {
 
-    @Builder.Default
-    LocalDateTime timestamp = now();
-    String error;
-    String message;
-    String path;
-    List<String> errorsList;
+    public ErrorMessageDTO {
+        timestamp = now();
+    }
 }
