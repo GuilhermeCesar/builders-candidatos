@@ -6,7 +6,7 @@ CREATE TABLE cliente.cliente
     id   int NOT NULL AUTO_INCREMENT,
     cpf  VARCHAR(11),
     nome VARCHAR(100),
-    dataNascimento DATE,
+    data_nascimento DATE,
     sexo varchar(1),
     PRIMARY KEY (id)
 );

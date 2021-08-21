@@ -1,4 +1,4 @@
-package io.platformbuilders.cliente.domain.enumeration;
+package io.platformbuilders.cliente.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

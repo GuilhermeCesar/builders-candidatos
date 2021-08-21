@@ -1,14 +1,12 @@
-package io.platformbuilders.cliente.domain;
+package io.platformbuilders.cliente.dto;
 
-import io.platformbuilders.cliente.domain.enumeration.Sexo;
+import io.platformbuilders.cliente.enumeration.Sexo;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Value
@@ -18,12 +16,10 @@ import java.time.LocalDate;
 @ToString
 public class ClienteDTO {
 
-    @NotEmpty
+    Integer id;
     String nome;
-    @NotEmpty
     String cpf;
-    @NotNull
     LocalDate dataNascimento;
-    @NotNull
     Sexo sexo;
+    Integer idade;
 }
