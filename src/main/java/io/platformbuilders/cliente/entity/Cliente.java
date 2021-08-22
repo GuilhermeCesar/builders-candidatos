@@ -29,7 +29,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id")
+    @Column
     private Long id;
 
     @Column
@@ -44,4 +44,5 @@ public class Cliente {
     @Enumerated(STRING)
     @Column
     private Sexo sexo;
+
 }

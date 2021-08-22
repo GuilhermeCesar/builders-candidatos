@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +45,11 @@ public class ClienteSpec implements Specification<Cliente> {
         this.cpfOptional.ifPresent(cpf -> predcs.add(builder.equal(root.get("cpf"), cpf)));
         this.dataNascimentoOptional.ifPresent(dataNascimento -> predcs.add(builder.equal(root.get("dataNascimento"), dataNascimento)));
         this.sexoOptional.ifPresent(sexo -> predcs.add(builder.equal(root.get("sexo"), sexo)));
+        this.idadeOptional.ifPresent(idade -> {
+            final var firstDayYear = LocalDate.now().minusYears(idade).with(TemporalAdjusters.firstDayOfYear());
+            final var lastDayYear = LocalDate.now().minusYears(idade).with(TemporalAdjusters.lastDayOfYear());
+            predcs.add(builder.between(root.get("dataNascimento"), firstDayYear, lastDayYear));
+        });
 
         return builder.and(predcs.toArray(new Predicate[predcs.size()]));
     }

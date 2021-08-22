@@ -13,6 +13,4 @@ public record ClientSearchDTO(
         @JsonDeserialize(using = LocalDateDeserializer.class) LocalDate dataNascimento,
         Sexo sexo,
         Integer idade) {
-
-
 }
