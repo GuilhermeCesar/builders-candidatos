@@ -1,4 +1,4 @@
-package io.platformbuilders.cliente.utils.serializer;
+package io.platformbuilders.cliente.utils.deserializer;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static io.platformbuilders.cliente.enumeration.Sexo.FEMININO;
 import static io.platformbuilders.cliente.enumeration.Sexo.MASCULINO;
 import static io.platformbuilders.cliente.enumeration.Sexo.OUTROS;
-import static io.platformbuilders.cliente.utils.serializer.SexoDeserializer.deserialize;
+import static io.platformbuilders.cliente.utils.deserializer.SexoDeserializer.deserialize;
 
 class SexoDeserializerTest {
 

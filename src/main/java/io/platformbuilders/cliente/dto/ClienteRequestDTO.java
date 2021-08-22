@@ -3,9 +3,9 @@ package io.platformbuilders.cliente.dto;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import io.platformbuilders.cliente.enumeration.Sexo;
-import io.platformbuilders.cliente.utils.serializer.CpfDeserializer;
-import io.platformbuilders.cliente.utils.serializer.DateDeserializer;
-import io.platformbuilders.cliente.utils.serializer.SexoDeserializer;
+import io.platformbuilders.cliente.utils.deserializer.CpfDeserializer;
+import io.platformbuilders.cliente.utils.deserializer.LocalDateDeserializer;
+import io.platformbuilders.cliente.utils.deserializer.SexoDeserializer;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
@@ -37,7 +37,7 @@ public class ClienteRequestDTO {
     public static class JacksonBuilder {
 
         public JacksonBuilder dataNascimento(String dataNascimento) {
-            this.dataNascimento = DateDeserializer.localDatePtBr(dataNascimento);
+            this.dataNascimento = LocalDateDeserializer.localDatePtBr(dataNascimento);
             return this;
         }
 

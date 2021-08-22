@@ -1,4 +1,4 @@
-package io.platformbuilders.cliente.utils.serializer;
+package io.platformbuilders.cliente.utils.deserializer;
 
 import io.platformbuilders.cliente.enumeration.Sexo;
 

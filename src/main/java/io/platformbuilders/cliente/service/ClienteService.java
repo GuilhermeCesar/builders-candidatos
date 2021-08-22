@@ -1,5 +1,6 @@
 package io.platformbuilders.cliente.service;
 
+import io.platformbuilders.cliente.dto.ClientSearchDTO;
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
 import io.platformbuilders.cliente.entity.Cliente;
@@ -9,11 +10,14 @@ import io.platformbuilders.cliente.repository.ClienteRepository;
 import io.platformbuilders.cliente.utils.mapper.ClienteMapper;
 import io.vavr.control.Try;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import static io.platformbuilders.cliente.helper.ErrorCodeEnum.ERROR_NOT_FOUND;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
+@Slf4j
 @AllArgsConstructor
 @Service
 public class ClienteService {
@@ -50,5 +54,10 @@ public class ClienteService {
                 .orElseThrow(() -> new ServiceException(NOT_FOUND,
                         this.messageHelper.get(ERROR_NOT_FOUND, clienteId)
                 ));
+    }
+
+    public ClienteDTO buscar(ClientSearchDTO clienteDTO, Pageable pageable) {
+        log.debug("clienteDTP");
+        return null;
     }
 }

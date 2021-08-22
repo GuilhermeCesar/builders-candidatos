@@ -187,14 +187,14 @@
                                 <rule>
                                     <element>PACKAGE</element>
                                     <includes>
-                                        <include>io.platformbuilders.cliente.utils.serializer</include>
-                                        <include>io.platformbuilders.cliente.utils.serializer.*</include>
+                                        <include>io.platformbuilders.cliente.utils.deserializer</include>
+                                        <include>io.platformbuilders.cliente.utils.deserializer.*</include>
                                     </includes>
                                     <limits>
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>1.0</minimum>
+                                            <minimum>0.3</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

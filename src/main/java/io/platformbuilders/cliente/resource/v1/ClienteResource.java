@@ -1,9 +1,12 @@
 package io.platformbuilders.cliente.resource.v1;
 
+import io.platformbuilders.cliente.dto.ClientSearchDTO;
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
 import io.platformbuilders.cliente.service.ClienteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,5 +45,11 @@ public class ClienteResource {
     @GetMapping("/{clienteId}")
     public ClienteDTO getCliente(@PathVariable("clienteId") Long clienteId) {
         return this.clienteService.buscar(clienteId);
+    }
+
+    @GetMapping
+    public Page<ClienteDTO> getCliente(ClientSearchDTO clienteDTO, Pageable pageable) {
+        this.clienteService.buscar(clienteDTO, pageable);
+        return null;
     }
 }
