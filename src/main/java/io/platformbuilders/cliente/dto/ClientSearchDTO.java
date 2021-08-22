@@ -7,7 +7,7 @@ import io.platformbuilders.cliente.utils.deserializer.LocalDateDeserializer;
 import java.time.LocalDate;
 
 public record ClientSearchDTO(
-        Integer id,
+        Long id,
         String nome,
         String cpf,
         @JsonDeserialize(using = LocalDateDeserializer.class) LocalDate dataNascimento,

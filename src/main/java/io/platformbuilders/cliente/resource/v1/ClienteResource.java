@@ -49,7 +49,6 @@ public class ClienteResource {
 
     @GetMapping
     public Page<ClienteDTO> getCliente(ClientSearchDTO clienteDTO, Pageable pageable) {
-        this.clienteService.buscar(clienteDTO, pageable);
-        return null;
+        return this.clienteService.buscar(clienteDTO, pageable);
     }
 }
