@@ -23,6 +23,7 @@
         <jacoco.version>0.8.7</jacoco.version>
         <jackson.version>2.12.4</jackson.version>
         <springdoc-openapi-ui.version>1.5.10</springdoc-openapi-ui.version>
+        <rest-assured.version>4.4.0</rest-assured.version>
     </properties>
 
     <developers>
@@ -129,6 +130,16 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc-openapi-ui.version}</version>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

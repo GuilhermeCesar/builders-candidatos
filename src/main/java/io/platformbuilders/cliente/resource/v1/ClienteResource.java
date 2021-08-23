@@ -1,8 +1,8 @@
 package io.platformbuilders.cliente.resource.v1;
 
-import io.platformbuilders.cliente.dto.ClientSearchDTO;
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
+import io.platformbuilders.cliente.dto.ClienteSearchDTO;
 import io.platformbuilders.cliente.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -48,7 +48,7 @@ public class ClienteResource {
     }
 
     @GetMapping
-    public Page<ClienteDTO> getCliente(ClientSearchDTO clienteDTO, Pageable pageable) {
+    public Page<ClienteDTO> getCliente(ClienteSearchDTO clienteDTO, Pageable pageable) {
         return this.clienteService.buscar(clienteDTO, pageable);
     }
 }

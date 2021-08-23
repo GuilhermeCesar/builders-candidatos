@@ -1,8 +1,8 @@
 package io.platformbuilders.cliente.service;
 
-import io.platformbuilders.cliente.dto.ClientSearchDTO;
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
+import io.platformbuilders.cliente.dto.ClienteSearchDTO;
 import io.platformbuilders.cliente.entity.Cliente;
 import io.platformbuilders.cliente.exception.ServiceException;
 import io.platformbuilders.cliente.helper.MessageHelper;
@@ -59,15 +59,15 @@ public class ClienteService {
                 ));
     }
 
-    public Page<ClienteDTO> buscar(ClientSearchDTO clientSearchDTO, Pageable pageable) {
+    public Page<ClienteDTO> buscar(ClienteSearchDTO clienteSearchDTO, Pageable pageable) {
         var clientSpec = ClienteSpec
                 .builder()
-                .sexoOptional(ofNullable(clientSearchDTO.sexo()))
-                .cpfOptional(ofNullable(clientSearchDTO.cpf()))
-                .dataNascimentoOptional(ofNullable(clientSearchDTO.dataNascimento()))
-                .idadeOptional(ofNullable(clientSearchDTO.idade()))
-                .idOptional(ofNullable(clientSearchDTO.id()))
-                .nomeOptional(ofNullable(clientSearchDTO.nome()))
+                .sexoOptional(ofNullable(clienteSearchDTO.sexo()))
+                .cpfOptional(ofNullable(clienteSearchDTO.cpf()))
+                .dataNascimentoOptional(ofNullable(clienteSearchDTO.dataNascimento()))
+                .idadeOptional(ofNullable(clienteSearchDTO.idade()))
+                .idOptional(ofNullable(clienteSearchDTO.id()))
+                .nomeOptional(ofNullable(clienteSearchDTO.nome()))
                 .build();
 
         return this.clienteRepository.findAll(clientSpec, pageable)

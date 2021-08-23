@@ -16,8 +16,7 @@ public record ClienteDTO(Integer id,
                          String nome,
                          String cpf,
                          @JsonSerialize(using = LocalDateSerializer.class) LocalDate dataNascimento,
-                         Sexo sexo,
-                         Integer idade) {
+                         Sexo sexo) {
 
     public Integer getIdade() {
         return calculaIdade(this.dataNascimento);
