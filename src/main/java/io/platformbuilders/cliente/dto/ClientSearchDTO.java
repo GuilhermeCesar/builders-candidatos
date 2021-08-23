@@ -11,6 +11,4 @@ public record ClientSearchDTO(
         LocalDate dataNascimento,
         Sexo sexo,
         Integer idade) {
-
-
 }

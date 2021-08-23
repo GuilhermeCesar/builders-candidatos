@@ -23,5 +23,4 @@ public class ErrorMessageDTO {
     String path;
     List<String> errorsList;
     String trace;
-
 }
