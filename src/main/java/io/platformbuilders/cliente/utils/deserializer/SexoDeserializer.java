@@ -1,12 +1,22 @@
 package io.platformbuilders.cliente.utils.deserializer;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import io.platformbuilders.cliente.enumeration.Sexo;
+
+import java.io.IOException;
 
 import static io.platformbuilders.cliente.enumeration.Sexo.OUTROS;
 
-public class SexoDeserializer {
+public class SexoDeserializer extends StdDeserializer<Sexo> {
 
-    private SexoDeserializer() {
+    public SexoDeserializer() {
+        this(Sexo.class);
+    }
+
+    public SexoDeserializer(Class<Sexo> t) {
+        super(t);
     }
 
     public static Sexo deserialize(String sexo) {
@@ -16,5 +26,10 @@ public class SexoDeserializer {
             }
         }
         return OUTROS;
+    }
+
+    @Override
+    public Sexo deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+        return SexoDeserializer.deserialize(p.getText());
     }
 }

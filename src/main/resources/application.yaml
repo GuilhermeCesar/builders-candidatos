@@ -14,7 +14,6 @@ spring:
     show-sql: true
   liquibase:
     enabled: true
-#    change-log: classpath:db/changelog/liquibase-change.yaml
 
 logging:
   level:
@@ -22,3 +21,4 @@ logging:
     io.platformbuilders: INFO
     org.springframework: ERROR
     javax.management: ERROR
+    org.springframework.web: TRACE
