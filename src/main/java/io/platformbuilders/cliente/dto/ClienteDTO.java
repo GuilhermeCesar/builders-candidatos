@@ -3,6 +3,7 @@ package io.platformbuilders.cliente.dto;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.platformbuilders.cliente.enumeration.Sexo;
 import io.platformbuilders.cliente.utils.serializer.LocalDateSerializer;
+import io.platformbuilders.cliente.utils.serializer.SexoSerializer;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
@@ -25,10 +26,11 @@ public class ClienteDTO {
     String cpf;
     @JsonSerialize(using = LocalDateSerializer.class)
     LocalDate dataNascimento;
+    @JsonSerialize(using = SexoSerializer.class)
     Sexo sexo;
     Integer idade;
 
     public Integer getIdade() {
-        return calculaIdade(dataNascimento);
+        return calculaIdade(this.dataNascimento);
     }
 }

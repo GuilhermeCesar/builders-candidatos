@@ -13,8 +13,8 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateSerializer extends JsonSerializer<LocalDate> {
     private static final String PATTERN = "dd/MM/yyyy";
 
-    public void serialize(LocalDate zonedDateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(LocalDate localDate, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN);
-        jsonGenerator.writeString(formatter.format(zonedDateTime));
+        jsonGenerator.writeString(formatter.format(localDate));
     }
 }
