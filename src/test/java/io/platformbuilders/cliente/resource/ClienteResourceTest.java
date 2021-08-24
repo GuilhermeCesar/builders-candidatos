@@ -5,8 +5,8 @@ import io.platformbuilders.cliente.enumeration.Sexo;
 import io.platformbuilders.cliente.service.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,10 +24,10 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.mockito.ArgumentMatchers.any;
 
 @Slf4j
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ActiveProfiles({"default", "test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ClienteResourceTest {
+class ClienteResourceTest {
 
     @Value("${test.api.v1.basePath}")
     private String basePath;
@@ -38,8 +38,9 @@ public class ClienteResourceTest {
     @LocalServerPort
     private Integer portServer;
 
+
     @Test
-    public void searchCardsSuccessfully() {
+    void searchCardsSuccessfully() {
         final var clienteDTOS = List.of(
                 new ClienteDTO(1, "Guilherme", "01961770067", LocalDate.of(2008, 11, 14), Sexo.MASCULINO),
                 new ClienteDTO(2, "Joãozinho", "54312324018", LocalDate.of(2008, 11, 14), Sexo.MASCULINO)

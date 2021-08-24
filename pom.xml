@@ -266,27 +266,21 @@
                                     <includes>
                                         <include>io.platformbuilders.cliente.utils.deserializer</include>
                                         <include>io.platformbuilders.cliente.utils.deserializer.*</include>
+                                        <include>io.platformbuilders.cliente.service</include>
+                                        <include>io.platformbuilders.cliente.service.*</include>
+                                        <include>io.platformbuilders.cliente.resource.v1</include>
+                                        <include>io.platformbuilders.cliente.resource.v1.*</include>
                                     </includes>
                                     <limits>
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>30%</minimum>
+                                            <minimum>25%</minimum>
                                         </limit>
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>30%</minimum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                                <rule>
-                                    <element>BUNDLE</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>0.04</minimum>
+                                            <minimum>25%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
