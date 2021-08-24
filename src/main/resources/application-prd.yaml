@@ -1,33 +1,7 @@
 ### GENERAL ###
 server:
-  port: 8080
-  servlet.context-path: /api
+  port: 8090
 
 spring:
-  application.name: cliente
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://mysql:3306/cliente
-    password: root
-    username: root
-  jpa:
-    show-sql: true
-  liquibase:
-    enabled: true
-  jackson:
-    serialization.WRITE_DATES_AS_TIMESTAMPS: false
-    serialization.INDENT_OUTPUT: true
-    deserialization.fail-on-unknown-properties: false
-    default-property-inclusion: NON_ABSENT
-
-springdoc:
-  swagger-ui:
-    server.list: http://localhost:${server.port}${server.servlet.context-path}
-
-logging:
-  level:
-    root: ERROR
-    io.platformbuilders: INFO
-    org.springframework: ERROR
-    javax.management: ERROR
-    org.springframework.web: TRACE
