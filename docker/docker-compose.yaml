@@ -15,17 +15,16 @@ services:
       MYSQL_USER: cliente
       MYSQL_PASSWORD: dQ6Nb&P3OUwT
       MYSQL_DATABASE: cliente
-    expose:
-      - "3306"
     volumes:
       - mysqldb:/var/lib/mysql
 
   cliente-app:
+    container_name: client-app
     image: guilhermecesar/builders-cliente
-    expose:
-      - "8080:8080"
     ports:
-      - "8080"
+      - "8080:8080"
+    depends_on:
+      - mysql
 
 volumes:
   mysqldb:
