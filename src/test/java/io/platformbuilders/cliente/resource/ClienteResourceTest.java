@@ -52,6 +52,6 @@ public class ClienteResourceTest {
                 .get("http://localhost:" + this.portServer + this.basePath)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
-                .body(matchesJsonSchemaInClasspath("json-schema/queryJson.json"));
+                .body(matchesJsonSchemaInClasspath("json-schema/pageable.json"));
     }
 }
