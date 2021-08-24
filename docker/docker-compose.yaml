@@ -20,5 +20,10 @@ services:
     volumes:
       - mysqldb:/var/lib/mysql
 
+  cliente-app:
+    image: guilhermecesar/builders-cliente
+    expose:
+      - 8080
+
 volumes:
   mysqldb:
