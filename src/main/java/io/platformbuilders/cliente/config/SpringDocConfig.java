@@ -17,9 +17,21 @@ public class SpringDocConfig {
     public OpenAPI customOpenAPI(@Value("${springdoc.swagger-ui.server.list}") final List<String> servers) {
         return new OpenAPI()
                 .servers(servers.stream().map(s -> new Server().url(s)).toList())
-                .info(new Info().title("Client Api")
+                .info(new Info()
+                        .title("Client Api")
                         .description("Client Api")
                         .version("1.0.0")
-                        .license(new License().name("Apache 2.0").url("http://springdoc.org")));
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org"))
+                );
+    }
+
+
+    public static class SwaggerTags {
+
+        public static final String CLIENTE = "Cliente";
+
+        private SwaggerTags() {
+            super();
+        }
     }
 }

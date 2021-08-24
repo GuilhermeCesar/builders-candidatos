@@ -46,9 +46,9 @@ public class ClienteSpec implements Specification<Cliente> {
         this.dataNascimentoOptional.ifPresent(dataNascimento -> predcs.add(builder.equal(root.get("dataNascimento"), dataNascimento)));
         this.sexoOptional.ifPresent(sexo -> predcs.add(builder.equal(root.get("sexo"), sexo)));
         this.idadeOptional.ifPresent(idade -> {
-            final var firstDayYear = LocalDate.now().minusYears(idade).with(TemporalAdjusters.firstDayOfYear());
-            final var lastDayYear = LocalDate.now().minusYears(idade).with(TemporalAdjusters.lastDayOfYear());
-            predcs.add(builder.between(root.get("dataNascimento"), firstDayYear, lastDayYear));
+            final var primeiroDiaDoAnoDeNascimento = LocalDate.now().minusYears(idade + 1L).with(TemporalAdjusters.firstDayOfYear());
+            final var ultimoDiaDoAnoDeNascimento = LocalDate.now().minusYears(idade + 1L).with(TemporalAdjusters.lastDayOfYear());
+            predcs.add(builder.between(root.get("dataNascimento"), primeiroDiaDoAnoDeNascimento, ultimoDiaDoAnoDeNascimento));
         });
 
         return builder.and(predcs.toArray(new Predicate[predcs.size()]));

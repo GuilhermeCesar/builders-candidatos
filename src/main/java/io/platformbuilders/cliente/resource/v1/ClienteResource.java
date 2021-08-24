@@ -3,6 +3,7 @@ package io.platformbuilders.cliente.resource.v1;
 import io.platformbuilders.cliente.dto.ClienteDTO;
 import io.platformbuilders.cliente.dto.ClienteRequestDTO;
 import io.platformbuilders.cliente.dto.ClienteSearchDTO;
+import io.platformbuilders.cliente.enumeration.Sexo;
 import io.platformbuilders.cliente.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,7 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +21,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -69,7 +73,16 @@ public class ClienteResource {
     )
     @GetMapping
     @ResponseStatus(OK)
-    public Page<ClienteDTO> getCliente(ClienteSearchDTO clienteDTO, Pageable pageable) {
-        return this.clienteService.buscar(clienteDTO, pageable);
+    public Page<ClienteDTO> getCliente(@RequestParam(name = "id", required = false) Long id,
+                                       @RequestParam(name = "nome", required = false) String nome,
+                                       @RequestParam(name = "cpf", required = false) String cpf,
+                                       @RequestParam(name = "dataNascimento", required = false) LocalDate dataNascimento,
+                                       @RequestParam(name = "sexo", required = false) Sexo sexo,
+                                       @RequestParam(name = "idade", required = false) Integer idade,
+                                       @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+                                       @RequestParam(value = "size", required = false, defaultValue = "10") Integer size) {
+
+        final var clienteDTO = new ClienteSearchDTO(id, nome, cpf, dataNascimento, sexo, idade);
+        return this.clienteService.buscar(clienteDTO, PageRequest.of(page, size, Sort.by(Sort.Order.desc("id"))));
     }
 }
