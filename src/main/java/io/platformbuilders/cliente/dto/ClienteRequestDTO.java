@@ -6,6 +6,7 @@ import io.platformbuilders.cliente.enumeration.Sexo;
 import io.platformbuilders.cliente.utils.deserializer.CpfDeserializer;
 import io.platformbuilders.cliente.utils.deserializer.LocalDateDeserializer;
 import io.platformbuilders.cliente.utils.deserializer.SexoDeserializer;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
@@ -25,10 +26,12 @@ public class ClienteRequestDTO {
 
     @NotEmpty
     String nome;
+    @Schema(defaultValue = "318.955.540-04")
     @CPF
     @NotEmpty
     String cpf;
     @NotNull
+    @Schema(pattern = "dd/mm/YYYY", description = "dd/mm/YYYY", type = "string", defaultValue = "09/06/1993")
     LocalDate dataNascimento;
     @NotNull
     Sexo sexo;

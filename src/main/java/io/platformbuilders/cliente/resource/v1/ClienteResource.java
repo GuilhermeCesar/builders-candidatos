@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,7 +78,7 @@ public class ClienteResource {
     public Page<ClienteDTO> getCliente(@RequestParam(name = "id", required = false) Long id,
                                        @RequestParam(name = "nome", required = false) String nome,
                                        @RequestParam(name = "cpf", required = false) String cpf,
-                                       @RequestParam(name = "dataNascimento", required = false) LocalDate dataNascimento,
+                                       @DateTimeFormat(pattern = "dd/MM/yyyy") @RequestParam(name = "dataNascimento", required = false) LocalDate dataNascimento,
                                        @RequestParam(name = "sexo", required = false) Sexo sexo,
                                        @RequestParam(name = "idade", required = false) Integer idade,
                                        @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
