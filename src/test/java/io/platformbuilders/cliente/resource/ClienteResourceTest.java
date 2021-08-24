@@ -1,47 +1,57 @@
 package io.platformbuilders.cliente.resource;
 
-//@Slf4j
-//@RunWith(SpringRunner.class)
-//@ActiveProfiles({"test"})
-//@SpringBootTest(classes = Application.class,
-//        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+import io.platformbuilders.cliente.dto.ClienteDTO;
+import io.platformbuilders.cliente.enumeration.Sexo;
+import io.platformbuilders.cliente.service.ClienteService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpStatus;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.mockito.ArgumentMatchers.any;
+
+@Slf4j
+@RunWith(SpringRunner.class)
+@ActiveProfiles({"default", "test"})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ClienteResourceTest {
 
+    @Value("${test.api.v1.basePath}")
+    private String basePath;
 
-//    @MockBean
-//    private ClienteService clienteService;
+    @MockBean
+    private ClienteService clienteService;
 
+    @LocalServerPort
+    private Integer portServer;
 
-//    @Test
-//    public void searchCardsSuccessfully() {
-//        try {
-////            final var clienteDTO = new ClienteDTO(1,"Guilherme", "01961770067", LocalDate.of(2010, 10,10), Sexo.MASCULINO,10);
-//
-//            new PageImpl()
-//
-//            Mockito.when(this.clienteService.buscar(any(), any()))
-//                    .thenReturn(Optional.of(contratacaoEntity));
-//
-//            when(this.cpfNumberService.findAccountIdByCpf(this.cpf))
-//                    .thenReturn(Arrays.asList(card1));
-//
-//            String url = this.basePath + this.query;
-//            String cardRequestBody = this.objectMapper.writeValueAsString(new CardRequestDTO(this.cpf));
-//
-//            given()
-//                    .port(this.portServer)
-//                    .contentType(JSON)
-//                    .body(cardRequestBody)
-//                    .post(url)
-//                    .then()
-//                    .statusCode(OK.value())
-//                    .body(matchesJsonSchemaInClasspath("json-schema/card/queryJson.json"));
-//
-//        } catch (JsonProcessingException ex) {
-//            log.error("Erro ao serializar cartão", ex);
-//        } catch (NotFoundException | InvalidCpfException |
-//                PersonIntegrationException | CardIntegrationException e) {
-//            log.error("Erro ao buscar cartão por cpf", e);
-//        }
-//    }
+    @Test
+    public void searchCardsSuccessfully() {
+        final var clienteDTOS = List.of(
+                new ClienteDTO(1, "Guilherme", "01961770067", LocalDate.of(2008, 11, 14), Sexo.MASCULINO),
+                new ClienteDTO(2, "Joãozinho", "54312324018", LocalDate.of(2008, 11, 14), Sexo.MASCULINO)
+        );
+
+        Mockito.when(this.clienteService.buscar(any(), any()))
+                .thenReturn(new PageImpl(clienteDTOS));
+
+        given()
+                .get("http://localhost:" + this.portServer + this.basePath)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .body(matchesJsonSchemaInClasspath("json-schema/queryJson.json"));
+    }
 }

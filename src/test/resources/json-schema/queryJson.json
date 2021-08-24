@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "content",
+    "pageable",
+    "last",
+    "totalPages",
+    "totalElements",
+    "size",
+    "number",
+    "sort",
+    "first",
+    "numberOfElements",
+    "empty"
+  ],
+  "properties": {
+    "content": {
+      "type": "array"
+    }
+  },
+  "definitions": {
+    "clienteDTO": {
+      "type": "object",
+      "required": [
+        "id",
+        "nome",
+        "dataNascimento",
+        "sexo",
+        "idade"
+      ]
+    }
+  }
+}

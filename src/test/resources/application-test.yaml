@@ -1,0 +1,4 @@
+test:
+  api:
+    v1:
+      basePath: "/api/v1/clientes"
