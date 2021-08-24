@@ -11,8 +11,8 @@
     <groupId>io.platformbuilders</groupId>
     <artifactId>cliente</artifactId>
     <version>1.0.0</version>
-    <name>cliente</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Cliente</name>
+    <description>Projeto de clientes builders</description>
     <properties>
         <java.version>16</java.version>
         <testcontainers.version>1.15.3</testcontainers.version>

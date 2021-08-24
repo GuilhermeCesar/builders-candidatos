@@ -28,11 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.time.LocalDate;
 
+import static io.platformbuilders.cliente.config.SpringDocConfig.SwaggerTags.CLIENTE;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@Tag(name = "Clientes")
+@Tag(name = CLIENTE)
 @Validated
 @RequiredArgsConstructor
 @RestController
@@ -41,7 +42,7 @@ public class ClienteResource {
 
     private final ClienteService clienteService;
 
-    @Operation(summary = "Create client",
+    @Operation(summary = "Criar clientes",
             responses = {@ApiResponse(responseCode = "201", content = @Content(schema = @Schema(implementation = ClienteDTO.class)))}
     )
     @PostMapping
@@ -50,7 +51,7 @@ public class ClienteResource {
         return this.clienteService.salvar(clienteRequestDTO);
     }
 
-    @Operation(summary = "Update client by id",
+    @Operation(summary = "Atualizar clientes",
             responses = {@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = ClienteDTO.class)))})
     @PutMapping("/{clienteId}")
     @ResponseStatus(OK)
@@ -59,7 +60,7 @@ public class ClienteResource {
         return this.clienteService.atualizar(clienteId, clienteRequestDTO);
     }
 
-    @Operation(summary = "Get clients",
+    @Operation(summary = "Get client by id",
             responses = {@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = ClienteDTO.class)))}
     )
     @GetMapping("/{clienteId}")
@@ -68,7 +69,7 @@ public class ClienteResource {
         return this.clienteService.buscar(clienteId);
     }
 
-    @Operation(summary = "Get clients",
+    @Operation(summary = "Find by filter",
             responses = {@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = Page.class)))}
     )
     @GetMapping

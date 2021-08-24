@@ -7,7 +7,11 @@ import lombok.Getter;
 @Getter
 public enum ErrorCodeEnum {
 
-    ERROR_NOT_FOUND("error.not.found");
+    ERROR_NOT_FOUND("error.not.found"),
+
+    SWAGGER_VERSION("swagger.version"),
+    SWAGGER_DESCRIPTION("swagger.description"),
+    SWAGGER_NAME("swagger.name");
 
     private final String messageKey;
 }

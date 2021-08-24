@@ -29,16 +29,17 @@ public class AppConfig {
     }
 
     @Bean
+    MessageHelper messageHelper(MessageSource messageSource) {
+        return new MessageHelper(messageSource);
+    }
+
+    @Bean
     LocalValidatorFactoryBean getValidator(MessageSource messageSource) {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource);
         return bean;
     }
 
-    @Bean
-    MessageHelper messageHelper(MessageSource messageSource) {
-        return new MessageHelper(messageSource);
-    }
 
     @Bean
     Formatter<Sexo> sexoFormatter() {
