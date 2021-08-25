@@ -23,18 +23,17 @@ import java.util.Optional;
 public class ClienteSpec implements Specification<Cliente> {
 
     @Builder.Default
-    private transient Optional<Long> idOptional = Optional.empty();
+    transient Optional<Long> idOptional = Optional.empty();
     @Builder.Default
-    private transient Optional<String> nomeOptional = Optional.empty();
+    transient Optional<String> nomeOptional = Optional.empty();
     @Builder.Default
-    private transient Optional<String> cpfOptional = Optional.empty();
+    transient Optional<String> cpfOptional = Optional.empty();
     @Builder.Default
-    private transient Optional<LocalDate> dataNascimentoOptional = Optional.empty();
+    transient Optional<LocalDate> dataNascimentoOptional = Optional.empty();
     @Builder.Default
-    private transient Optional<Sexo> sexoOptional = Optional.empty();
+    transient Optional<Sexo> sexoOptional = Optional.empty();
     @Builder.Default
-    private transient Optional<Integer> idadeOptional = Optional.empty();
-
+    transient Optional<Integer> idadeOptional = Optional.empty();
 
     @Override
     public Predicate toPredicate(Root<Cliente> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder builder) {

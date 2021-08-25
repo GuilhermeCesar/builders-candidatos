@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.platformbuilders.cliente.enumeration.Sexo;
 import io.platformbuilders.cliente.utils.serializer.LocalDateSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 
 import static io.platformbuilders.cliente.utils.CalculaIdadeUtils.calculaIdade;
 
+@Builder
 @With
 @Jacksonized
 public record ClienteDTO(Integer id,
@@ -20,7 +22,7 @@ public record ClienteDTO(Integer id,
                          @JsonSerialize(using = LocalDateSerializer.class) LocalDate dataNascimento,
                          Sexo sexo) {
 
-    public Integer getIdade() {
+    public Integer idade() {
         return calculaIdade(this.dataNascimento);
     }
 }
