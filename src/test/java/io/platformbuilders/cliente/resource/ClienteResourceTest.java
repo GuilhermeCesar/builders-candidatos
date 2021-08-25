@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 @Slf4j
 @ExtendWith(SpringExtension.class)
-@ActiveProfiles({"default", "test"})
+@ActiveProfiles({"test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ClienteResourceTest {
 
