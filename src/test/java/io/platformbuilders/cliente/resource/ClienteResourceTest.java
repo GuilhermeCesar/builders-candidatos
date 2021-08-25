@@ -38,7 +38,6 @@ class ClienteResourceTest {
     @LocalServerPort
     private Integer portServer;
 
-
     @Test
     void searchCardsSuccessfully() {
         final var clienteDTOS = List.of(
