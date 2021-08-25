@@ -39,7 +39,7 @@ class ClienteResourceTest {
     private Integer portServer;
 
     @Test
-    void searchCardsSuccessfully() {
+    void buscarClientes() {
         final var clienteDTOS = List.of(
                 new ClienteDTO(1, "Guilherme", "01961770067", LocalDate.of(2008, 11, 14), Sexo.MASCULINO),
                 new ClienteDTO(2, "Joãozinho", "54312324018", LocalDate.of(2008, 11, 14), Sexo.MASCULINO)
